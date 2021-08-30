@@ -61,9 +61,7 @@ function postData(req, res) {
     city: req.body.city,
     feeling: req.body.feeling,
     date: req.body.date,
-    zip: req.body.zip,
   }
-
   projectData = newEntry;
   console.log(projectData)
 };

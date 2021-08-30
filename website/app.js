@@ -2,7 +2,7 @@
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 
 // Personal API Key for OpenWeatherMap API
-let apiKey = '&appid=c0a5556d3985c18a8a409bdb583e60a5';
+let apiKey = '&appid=';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -36,6 +36,7 @@ function generateWeather(e) {
     });
 }
 
+
 //Get Web API Data
 const getWeather = async (baseURL, zip, apiKey) => {
   //Build URL into Fetch Call
@@ -44,13 +45,13 @@ const getWeather = async (baseURL, zip, apiKey) => {
   try {
     const weatherData = await res.json();
     console.log(weatherData)
-
     return weatherData;
     // appropriately handle the error
   } catch (error) {
     console.log("error", error);
   }
 }
+
 
 //Get Project Data Function
 const getData = async () => {
@@ -67,7 +68,6 @@ const getData = async () => {
 }
 
 
-
 //Post Data Function
 const postData = async (url = '', data = {}) => {
   console.log(data);
@@ -80,7 +80,6 @@ const postData = async (url = '', data = {}) => {
     // Body data type must match "Content-Type" header        
     body: JSON.stringify(data),
   });
-
   try {
     const newData = await response.json();
     console.log(newData);
@@ -91,7 +90,7 @@ const postData = async (url = '', data = {}) => {
 }
 
 
-// //Update UI
+//Update UI
 const updateUI = async () => {
   const request = await fetch('/all');
   try {
@@ -101,7 +100,6 @@ const updateUI = async () => {
     document.getElementById('content').innerHTML = allData.feeling;
     document.getElementById('date').innerHTML = allData.date;
     document.getElementById('city').innerHTML = allData.city;
-
   } catch (error) {
     console.log("error", error);
   }
