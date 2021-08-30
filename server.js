@@ -35,16 +35,35 @@ function listening() {
   console.log(`running on local host: ${port}`);
 };
 
+
 // GET route
 app.get('/all', sendData);
 
-function sendData (request, response) {
-  response.send(projectData);
+function sendData(req, res) {
+  res.send(projectData);
+  console.log(projectData)
 };
 
 // POST route
-app.post('/postData', function (req, res) {
-  projectData = req.body;
+app.post('/add', callBack);
+
+function callBack(req, res) {
   res.send('POST received');
-  console.log(projectData);
-});
+  console.log('test');
+};
+
+// POST route
+app.post('/addWeather', postData);
+
+function postData(req, res) {
+  newEntry = {
+    temp: req.body.temp,
+    city: req.body.city,
+    feeling: req.body.feeling,
+    date: req.body.date,
+    zip: req.body.zip,
+  }
+
+  projectData = newEntry;
+  console.log(projectData)
+};
